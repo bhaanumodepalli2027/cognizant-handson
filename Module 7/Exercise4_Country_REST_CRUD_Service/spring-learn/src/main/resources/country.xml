@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Four supported booking countries with ISO codes -->
+    <bean id="india" class="com.cognizant.springlearn.Country">
+        <property name="code" value="IN"/>
+        <property name="name" value="India"/>
+    </bean>
+
+    <bean id="unitedStates" class="com.cognizant.springlearn.Country">
+        <property name="code" value="US"/>
+        <property name="name" value="United States"/>
+    </bean>
+
+    <bean id="germany" class="com.cognizant.springlearn.Country">
+        <property name="code" value="DE"/>
+        <property name="name" value="Germany"/>
+    </bean>
+
+    <bean id="japan" class="com.cognizant.springlearn.Country">
+        <property name="code" value="JP"/>
+        <property name="name" value="Japan"/>
+    </bean>
+
+    <!-- Used by GET /country — returns India details -->
+    <bean id="singleCountry" class="com.cognizant.springlearn.Country">
+        <property name="code" value="IN"/>
+        <property name="name" value="India"/>
+    </bean>
+
+    <!-- Used by GET /countries — returns all four countries -->
+    <bean id="countryList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="india"/>
+                <ref bean="unitedStates"/>
+                <ref bean="germany"/>
+                <ref bean="japan"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
