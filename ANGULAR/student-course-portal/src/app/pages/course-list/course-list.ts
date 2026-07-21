@@ -1,32 +1,25 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CourseCard } from '../../components/course-card/course-card';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [CommonModule, CourseCard],
   templateUrl: './course-list.html',
-  styleUrl: './course-list.css'
+  styleUrls: ['./course-list.css']
 })
-export class CourseList {
+export class CourseListComponent implements OnInit {
 
-  selectedCourseId: number | null = null;
+  isLoading = true;
 
-  courses = [
-    { id:1, name:'Angular', code:'CS101', credits:4 },
-    { id:2, name:'Java', code:'CS102', credits:4 },
-    { id:3, name:'DBMS', code:'CS103', credits:3 },
-    { id:4, name:'React', code:'CS104', credits:3 },
-    { id:5, name:'Spring Boot', code:'CS105', credits:4 }
-  ];
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  onEnroll(id:number){
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;
 
-    console.log("Enrolling in course:", id);
+      // Force Angular to update the view
+      this.cdr.detectChanges();
 
-    this.selectedCourseId=id;
-
+      console.log('Loading finished:', this.isLoading);
+    }, 1500);
   }
-
 }

@@ -1,19 +1,30 @@
 <h2>Available Courses</h2>
 
-<app-course-card
+@if (isLoading) {
 
-*ngFor="let c of courses"
+  <p>Loading courses...</p>
 
-[course]="c"
+} @else {
 
-(enrollRequested)="onEnroll($event)">
+  @if (courses.length > 0) {
 
-</app-course-card>
+    @for (course of courses; track course.id) {
 
-<p *ngIf="selectedCourseId">
+      <app-course-card
+        [course]="course"
+        (enrollRequested)="onEnroll($event)">
+      </app-course-card>
 
-Selected Course ID:
+    }
 
-{{selectedCourseId}}
+    @if (selectedCourseId) {
+      <p>Selected Course ID: {{ selectedCourseId }}</p>
+    }
 
-</p>
+  } @else {
+
+    <p>No courses available.</p>
+
+  }
+
+}
