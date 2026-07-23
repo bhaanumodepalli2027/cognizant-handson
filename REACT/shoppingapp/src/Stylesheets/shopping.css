@@ -1,0 +1,25 @@
+.container{
+    text-align:center;
+    font-family:Arial;
+    margin-top:30px;
+}
+
+table{
+    margin:auto;
+    border-collapse:collapse;
+    width:80%;
+}
+
+table,th,td{
+    border:1px solid black;
+}
+
+th{
+    background-color:#0078d4;
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+}
