@@ -12,6 +12,7 @@ This repository contains practical implementations of concepts covered during th
 
 ## 🛠️ Technologies Used
 
+
 <p align="center">
 <img src="https://skillicons.dev/icons?i=java,spring,react,angular,git,github,mysql,maven,html,css,js,vscode" />
 </p>
@@ -63,13 +64,7 @@ COGNIZANT HANDSONS
 - Gain experience with Git and GitHub
 - Apply software development best practices
 
----
-## 🛠️ Technologies Used
 
-<p align="center">
-<img src="https://skillicons.dev/icons?i=java,spring,react,angular,git,github,mysql,maven,html,css,js,vscode" />
-</p>
----
 
 ## 📌 Highlights
 
