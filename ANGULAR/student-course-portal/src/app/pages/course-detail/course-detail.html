@@ -1,0 +1,36 @@
+<!-- 1. Shown ONLY when loading is true -->
+<div *ngIf="isLoading" style="padding: 20px;">
+  <h3>Loading course details...</h3>
+</div>
+
+<!-- 2. Shown ONLY when loading is false AND a course was found -->
+<div *ngIf="!isLoading && course" style="padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+  <h2>{{ course.name }}</h2>
+  <p><strong>Code:</strong> {{ course.code | uppercase }}</p>
+  <p><strong>Credits:</strong> {{ course.credits }}</p>
+  <p><strong>Fee:</strong> {{ course.price | currency }}</p>
+  <p><strong>Start Date:</strong> {{ course.startDate | date:'fullDate' }}</p>
+  <p><strong>Status:</strong> {{ course.gradeStatus }}</p>
+
+  <br>
+  <!-- Buttons Row -->
+  <div style="display: flex; gap: 15px; align-items: center; margin-top: 15px;">
+    <a routerLink="/courses" style="color: #3498db; text-decoration: underline;">&larr; Back to Course List</a>
+    
+    <!-- New Update Button -->
+    <button (click)="onQuickUpdate()" style="background-color: #f39c12; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">
+      ✏️ Mark as Passed
+    </button>
+
+    <button (click)="onDeleteCourse()" style="background-color: #e74c3c; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">
+      🗑️ Delete Course
+    </button>
+  </div>
+
+</div>
+
+<!-- 3. Shown ONLY when loading is false AND no course was found -->
+<div *ngIf="!isLoading && !course" style="padding: 20px;">
+  <h3>Course Not Found</h3>
+  <a routerLink="/courses" style="color: #3498db; text-decoration: underline;">&larr; Back to Course List</a>
+</div>

@@ -1,0 +1,6 @@
+/* This class will only be applied by [ngClass] if course.credits >= 4 */
+.high-credit-title {
+  color: #8e44ad;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

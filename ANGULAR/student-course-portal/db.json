@@ -1,0 +1,34 @@
+{
+  "courses": [
+    {
+      "name": "Java Fundamentals",
+      "code": "JVF101",
+      "credits": 4,
+      "gradeStatus": "passed",
+      "price": 209,
+      "startDate": "2026-07-24",
+      "id": "UNMS9032AtQ"
+    },
+    {
+      "name": "aaa",
+      "code": "AAA100",
+      "credits": 3,
+      "gradeStatus": "pending",
+      "price": 199.99,
+      "startDate": "2026-07-24",
+      "id": "SluDEnhXlVc"
+    },
+    {
+      "name": "JAVA",
+      "code": "MSD007",
+      "credits": 3,
+      "gradeStatus": "pending",
+      "price": 199.99,
+      "startDate": "2026-07-24",
+      "id": "HBDsfMgQOxQ"
+    }
+  ],
+  "students": [],
+  "enrollments": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

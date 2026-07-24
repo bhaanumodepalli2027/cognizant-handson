@@ -1,0 +1,53 @@
+<div 
+  [ngStyle]="{
+    'border-left': course.credits >= 4 ? '6px solid #8e44ad' : '6px solid #3498db',
+    'border-top': '1px solid #ccc',
+    'border-right': '1px solid #ccc',
+    'border-bottom': '1px solid #ccc',
+    'padding': '12px',
+    'margin-bottom': '12px',
+    'border-radius': '4px'
+  }"
+>
+  <h3 [ngClass]="{ 'high-credit-title': course.credits >= 4 }">
+    <!-- Limits title display to 10 characters -->
+    {{ course.name | summary:10 }} 
+  </h3>
+
+  <!-- 1. 'uppercase' transforms lowercase 'ang101' -> 'ANG101' -->
+  <p>Code: <strong>{{ course.code | uppercase }}</strong> | Credits: {{ course.credits }}</p>
+
+  <!-- 2. 'currency' formats 199.99 -> $199.99 -->
+  <!-- 3. 'date' transforms '2026-09-01' -> 'Sep 1, 2026' -->
+  <p>Fee: <strong>{{ course.price | currency }}</strong> | Starts: <strong>{{ course.startDate | date:'mediumDate' }}</strong></p>
+  
+  <div [ngSwitch]="course.gradeStatus" style="margin-bottom: 10px;">
+    <strong *ngSwitchCase="'passed'" style="color: green;">Status: Passed</strong>
+    <strong *ngSwitchCase="'failed'" style="color: red;">Status: Failed</strong>
+    <strong *ngSwitchDefault style="color: grey;">Status: Pending</strong>
+  </div>
+
+  <!-- NgRx Connected Button: Always visible using *ngIf / else -->
+  <ng-container *ngIf="isEnrolled$ | async; else enrollBtn">
+    <button 
+      (click)="toggleEnrollment(true)"
+      style="color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; background-color: #e74c3c;">
+      Unenroll
+    </button>
+  </ng-container>
+  
+  <ng-template #enrollBtn>
+    <button 
+      (click)="toggleEnrollment(false)"
+      style="color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; background-color: #2ecc71;">
+      Enroll
+    </button>
+  </ng-template>
+
+  <!-- Navigation link passes course.id dynamically -->
+  <a 
+    [routerLink]="['/courses', course.id]" 
+    style="margin-left: 10px; color: #3498db; text-decoration: none; font-weight: bold;">
+    View Details &rarr;
+  </a>
+</div>

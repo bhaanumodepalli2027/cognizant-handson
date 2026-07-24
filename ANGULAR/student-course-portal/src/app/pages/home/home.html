@@ -1,0 +1,20 @@
+<!-- Interpolation (One-way binding): Shows text from TS -->
+<h1>{{ portalName }}</h1>
+<p>Here you can browse available courses, manage your enrollments, and check your academic progress.</p>
+<hr>
+
+<!-- Property Binding [ ] and Event Binding ( ) -->
+<button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+<p>{{ message }}</p>
+
+<hr>
+
+<!-- Two-Way Binding [( )]: Updates both HTML and TS instantly -->
+<p>Search:</p>
+<input [(ngModel)]="searchTerm">
+<p>Searching for: {{ searchTerm }}</p>
+<div style="background-color: #f4f4f4; padding: 10px; margin-top: 20px;">
+  <strong>Courses Available: 12</strong> | 
+  <strong>Enrolled: 3</strong> | 
+  <strong>GPA: 3.8</strong>
+</div>

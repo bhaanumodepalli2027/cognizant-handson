@@ -1,0 +1,44 @@
+<h2>Available Courses</h2>
+
+<div style="background-color: #e8f4f8; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+  <!-- Read count reactively from the NgRx store via async pipe -->
+  <strong>Enrolled Courses Count:</strong> {{ (enrolledIds$ | async)?.length || 0 }}
+</div>
+
+<!-- Search Input bound via [(ngModel)] -->
+<div style="margin-bottom: 20px;">
+  <input 
+    type="text" 
+    [(ngModel)]="searchTerm" 
+    placeholder="Search by course name or code..."
+    style="width: 100%; max-width: 400px; padding: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;"
+  />
+  <p *ngIf="searchTerm" style="font-size: 12px; color: #555; margin-top: 5px;">
+    Filtering by: <em>"{{ searchTerm }}"</em>
+  </p>
+</div>
+
+<!-- Reactive Form Component -->
+<app-add-course></app-add-course>
+
+<!-- 1. Unwrap courses$ stream with | async as courses -->
+<div *ngIf="courses$ | async as courses; else loadingTemplate">
+  <!-- 2. Pass 'courses' directly into filterCourses(courses) -->
+  <div *ngIf="filterCourses(courses).length > 0; else noCourses">
+    <app-course-card 
+      *ngFor="let c of filterCourses(courses); trackBy: trackByCourseId" 
+      [course]="c">
+    </app-course-card>
+  </div>
+</div>
+
+<!-- 3. Loading fallback template used while async stream is pending -->
+<ng-template #loadingTemplate>
+  <p>Loading courses asynchronously...</p>
+</ng-template>
+
+<ng-template #noCourses>
+  <p>No courses match your search criteria.</p>
+</ng-template>
+
+<hr>
