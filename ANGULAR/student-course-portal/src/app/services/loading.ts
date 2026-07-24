@@ -5,18 +5,25 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoadingService {
-  // Step 91: BehaviorSubject to hold the loading state
+
+  // Observable to track loading state
   isLoading$ = new BehaviorSubject<boolean>(false);
 
-  show() {
+  constructor() {}
+
+  show(): void {
     setTimeout(() => {
       this.isLoading$.next(true);
     }, 0);
   }
 
-  hide() {
+  hide(): void {
     setTimeout(() => {
       this.isLoading$.next(false);
     }, 0);
+  }
+
+  get loading$() {
+    return this.isLoading$.asObservable();
   }
 }
